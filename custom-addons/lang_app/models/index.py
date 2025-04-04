@@ -194,7 +194,7 @@ class LearningApp(models.Model):
 
     def set_is_completed(self, is_completed):
         self.ensure_one()
-        self.vocabulary_id.set_is_completed(is_completed, self.id)
+        self.vocabulary_id.set_is_completed(is_completed)
 
     def refresh_is_completed(self):
         for record in self:
@@ -401,16 +401,15 @@ class Vocabulary(models.Model):
             f"{can_read}-{can_write}-{can_execute}-{result}-{os.path.exists(path)}"
         )
 
-    def set_is_completed(self, is_completed, learning_id):
+    def set_is_completed(self, is_completed):
         self.ensure_one()
-        complete_id = self.find_or_create_completed_vocabulary(learning_id)
+        complete_id = self.find_or_create_completed_vocabulary()
         complete_id.is_completed = is_completed
 
-    def find_or_create_completed_vocabulary(self, learning_id):
+    def find_or_create_completed_vocabulary(self):
         self.ensure_one()
         complete_id = self.complete_ids.search(
             [
-                ("learning_id", "=", learning_id),
                 ("vocabulary_id", "=", self.id),
                 ("user_id", "=", self.env.user.id),
             ]
