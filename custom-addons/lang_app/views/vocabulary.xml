@@ -23,24 +23,30 @@
                         </h1>
                     </div>
 
-                    <group string="Vocabulary">
-                        <field name="name"/>
-                        <field name="description"/>
-                        <field name="language"/>
-                        <field name="audio_url"/>
-                    </group>
+                    <group>
+                        <group string="Vocabulary">
+                            <field name="name"/>
+                            <field name="description"/>
+                        </group>
 
-                    <group string="Meta">
-                        <field name="translate_version"/>
-                        <field name="is_completed"/>
+                        <group string="Meta">
+                            <field name="audio_url"/>
+                            <field name="translate_version"/>
+                        </group>
                     </group>
 
                     <notebook>
                         <page string="Learnings" name="learning_ids">
                             <field name="learning_ids"/>
                         </page>
-                        <page string="Completes" name="complete_ids">
+                        <page string="Completes" name="complete_ids" groups="lang_app.group_lang_app_admin">
                             <field name="complete_ids"/>
+                        </page>
+                        <page string="Meta" name="Meta" groups="lang_app.group_lang_app_admin">
+                            <group>
+                                <field name="language"/>
+                                <field name="is_completed"/>
+                            </group>
                         </page>
                     </notebook>
 
@@ -92,8 +98,8 @@
 
     <menuitem id="menu_lang_app_vocabulary"
             name="Vocabulary" 
-            parent="menu_operations"
+            parent="menu_lang_app"
             action="action_lang_app_vocabulary"
-            sequence="10"/>
+            sequence="20"/>
 
 </odoo>

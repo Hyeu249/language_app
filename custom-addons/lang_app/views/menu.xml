@@ -8,8 +8,8 @@
     </record>
 
     <menuitem id="menu_lang_app" name="Language app" sequence="10">
-        <menuitem id="menu_operations" name="Operation" sequence="10"/>
-        <menuitem id="menu_home" name="Home" action="action_lang_app_home" sequence="20"/>
+        <menuitem id="menu_operations" name="Operation" sequence="10" groups="lang_app.group_lang_app_admin"/>
+        <!-- <menuitem id="menu_home" name="Home" action="action_lang_app_home" sequence="20"/> -->
     </menuitem>
 
 </odoo>

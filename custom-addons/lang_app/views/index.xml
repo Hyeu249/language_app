@@ -44,27 +44,31 @@
                     <field name="vocabulary_ids" invisible="1"/>
                     <field name="translate_version" invisible="1"/>
                     <field name="is_started" invisible="1"/>
-                    <notebook groups="lang_app.group_lang_app_admin">
+                    <notebook>
                         <page string="Info" name="info">
-                            <group string="Vocabulary">
+                            <group>
                                 <field name="name"/>
                                 <field name="description"/>
-                                <field name="vocabulary_id"/>
-                                <field name="topic_id"/>
-                            </group>
-                            <group string="Meta">
-                                <field name="progress"/>
-                                <field name="is_started"/>
-                                <field name="translate_version"/>
-                                <field name="random_correct_answer"/>
                             </group>
                         </page>
 
                         <page string="Vocabularies" name="vocabulary_ids">
                             <field name="vocabulary_ids"/>
                         </page>
-                        <page string="Started Learnings" name="started_learning_ids">
+
+                        <page string="Started Learnings" name="started_learning_ids" groups="lang_app.group_lang_app_admin">
                             <field name="started_learning_ids"/>
+                        </page>
+
+                        <page string="Meta" name="Meta" groups="lang_app.group_lang_app_admin">
+                            <group>
+                                <field name="progress"/>
+                                <field name="is_started"/>
+                                <field name="translate_version"/>
+                                <field name="random_correct_answer"/>
+                                <field name="vocabulary_id"/>
+                                <field name="topic_id"/>
+                            </group>
                         </page>
                     </notebook>
 
@@ -119,7 +123,7 @@
 
     <menuitem id="menu_lang_app_learning"
             name="Learning" 
-            parent="menu_operations"
+            parent="menu_lang_app"
             action="action_lang_app_learning"
             sequence="10"/>
 
